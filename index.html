@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5.6: Narrative Probability - Teacher's Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            height: 1600px;
+            overflow-y: auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .lesson-info {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .nav-buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.4rem;
+            margin-top: 1rem;
+        }
+
+        .nav-buttons a {
+            display: block;
+            padding: 0.4rem 0.6rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            transition: background 0.2s;
+            border: 1px solid rgba(255,255,255,0.3);
+            text-align: center;
+        }
+
+        .nav-buttons a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .section h4 {
+            color: #555;
+            font-size: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .tip-box {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .script-box {
+            background: #fafafa;
+            border: 2px solid #ddd;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            font-style: italic;
+        }
+
+        .script-label {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            font-style: normal;
+            font-weight: bold;
+        }
+
+        .teacher-note {
+            background: #fff9c4;
+            border-left: 4px solid #fbc02d;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .objectives-list {
+            margin: 1rem 0;
+        }
+
+        .objectives-list ul, .objectives-list ol {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        .objectives-list li {
+            margin: 0.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        table th {
+            background: #667eea;
+            color: white;
+            padding: 0.8rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .timeline {
+            margin: 1.5rem 0;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .timeline-time {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 0.9rem;
+        }
+
+        .timeline-content ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .timeline-content li {
+            margin: 0.3rem 0;
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .material-card {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .material-card h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .material-card ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .print-button:hover {
+            background: #45a049;
+        }
+
+        @media print {
+            .print-button {
+                display: none;
+            }
+            .header {
+                position: relative;
+            }
+            .nav-buttons {
+                display: none;
+            }
+            body {
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Lesson 5.6: Narrative Probability</h1>
+            <div class="subtitle">Teacher's Guide | Project Day</div>
+            <div class="lesson-info">Chapter 5: How AI Thinks - Probability & Prediction</div>
+            <div class="nav-buttons">
+                <a href="#overview">Overview</a>
+                <a href="#objectives">Objectives</a>
+                <a href="#materials">Materials</a>
+                <a href="#preparation">Preparation</a>
+                <a href="#lesson-flow">Lesson Flow</a>
+                <a href="#facilitation">Facilitation</a>
+                <a href="#assessment">Assessment</a>
+                <a href="#differentiation">Support</a>
+                <a href="#challenges">Challenges</a>
+                <a href="#reflection">Reflection</a>
+            </div>
+        </div>
+
+        <button class="print-button" onclick="window.print()">Print Guide</button>
+
+        <div class="content">
+            <!-- OVERVIEW SECTION -->
+            <section id="overview" class="section">
+                <h2>Lesson Overview</h2>
+                
+                <div class="highlight-box">
+                    <h4>The Big Idea</h4>
+                    <p>Students apply probability and pattern recognition concepts from Lessons 5.1-5.5 to their creative writing projects. They experiment with AI's predictive capabilities to explore narrative probability—the balance between predictability (boring) and randomness (incoherent) that makes compelling storytelling.</p>
+                </div>
+
+                <div class="objectives-list">
+                    <h4>Why This Lesson Matters</h4>
+                    <p>This is where technical literacy becomes creative power. Students discover that understanding HOW AI predicts (pattern matching from training data) helps them consciously craft narrative surprise. The "most likely" prediction is often the wrong creative choice—and now students understand why and can articulate their editorial decisions.</p>
+                </div>
+
+                <div class="teacher-note">
+                    <h4>💡 Pedagogical Note</h4>
+                    <p>This lesson bridges Chapter 5's technical content (probability, confidence, pattern recognition) with ongoing creative work from Chapters 2-3. Students aren't just learning about AI prediction—they're using it as a tool for narrative design while maintaining authorial control.</p>
+                </div>
+
+                <h3>Lesson Type: Project Day</h3>
+                <p>Students work independently on their creative writing projects, experimenting with AI predictions while applying editorial judgment. Most of the period is student work time with optional discussion at the end.</p>
+
+                <h3>Key Connections</h3>
+                <div class="objectives-list">
+                    <ul>
+                        <li><strong>To Chapter 5 (Lessons 5.1-5.5):</strong> Probability, confidence levels, pattern recognition, prediction limits</li>
+                        <li><strong>To Chapter 3 (Lessons 3.4-3.5):</strong> Editorial judgment, evaluation criteria for AI output</li>
+                        <li><strong>To Chapter 4:</strong> Recognizing when AI predictions reflect bias or stereotypes</li>
+                        <li><strong>To Chapter 2:</strong> Understanding AI capabilities and limitations in creative contexts</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- OBJECTIVES SECTION -->
+            <section id="objectives" class="section">
+                <h2>Learning Objectives</h2>
+                
+                <h3>What Students Will Learn</h3>
+                <div class="objectives-list">
+                    <h4>Mastery Point 1: Conceptual Understanding</h4>
+                    <ul>
+                        <li>Understand narrative probability—the balance between predictable and surprising plot developments</li>
+                        <li>Recognize that AI's "most likely" predictions are based on training data patterns, not creative judgment</li>
+                        <li>Understand that high probability ≠ high quality in creative work</li>
+                    </ul>
+
+                    <h4>Mastery Point 2: Technical Application</h4>
+                    <ul>
+                        <li>Use AI to generate predictions at different probability levels (likely, unexpected-but-plausible, multiple options)</li>
+                        <li>Evaluate AI predictions using probability thinking from Lessons 5.3-5.5</li>
+                        <li>Apply pattern recognition concepts to identify generic vs. fresh narrative choices</li>
+                    </ul>
+
+                    <h4>Mastery Point 3: Critical Evaluation</h4>
+                    <ul>
+                        <li>Assess when predictability serves the story vs. when surprise is needed</li>
+                        <li>Identify when AI predictions are too obvious, too generic, or stereotypical</li>
+                        <li>Articulate why the "wrong" creative choice might be technically more probable</li>
+                    </ul>
+
+                    <h4>Mastery Point 4: Creative Agency</h4>
+                    <ul>
+                        <li>Make conscious choices about narrative probability levels</li>
+                        <li>Use AI as a thought partner while maintaining authorial control</li>
+                        <li>Balance technical understanding with creative intuition</li>
+                    </ul>
+                </div>
+
+                <div class="success-box">
+                    <h4>Success Looks Like</h4>
+                    <p>Students experiment with AI predictions, evaluate them using probability concepts, and make deliberate creative choices—whether they use, modify, or reject AI's suggestions. Field journal reflections show sophisticated thinking about predictability as a narrative tool.</p>
+                </div>
+            </section>
+
+            <!-- MATERIALS SECTION -->
+            <section id="materials" class="section">
+                <h2>Materials Needed</h2>
+
+                <div class="materials-grid">
+                    <div class="material-card">
+                        <h4>Required</h4>
+                        <ul>
+                            <li>Student access to Alia-Creative (AI creative partner)</li>
+                            <li>Field journals (physical or digital)</li>
+                            <li>Student-facing Lesson 5.6 guide</li>
+                            <li>Students' ongoing creative writing projects</li>
+                        </ul>
+                    </div>
+
+                    <div class="material-card">
+                        <h4>Recommended</h4>
+                        <ul>
+                            <li>Timer for work periods and reflection</li>
+                            <li>Quiet/low background music (optional)</li>
+                            <li>Anchor chart: Key concepts from Lessons 5.1-5.5</li>
+                            <li>Reference: Editorial judgment criteria (Chapter 3)</li>
+                        </ul>
+                    </div>
+
+                    <div class="material-card">
+                        <h4>Optional</h4>
+                        <ul>
+                            <li>Example: AI predictions for a familiar story</li>
+                            <li>"Do Not Disturb" desk signs for focused work</li>
+                            <li>Sentence stems for discussion/reflection</li>
+                            <li>Chart paper if capturing student insights</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PREPARATION SECTION -->
+            <section id="preparation" class="section">
+                <h2>🔧 Teacher Preparation</h2>
+
+                <h3>Before Class Starts</h3>
+                
+                <div class="objectives-list">
+                    <h4>Technology Check (5 minutes before):</h4>
+                    <ul>
+                        <li>Verify all students can access Alia-Creative</li>
+                        <li>Ensure creative project artifacts are accessible</li>
+                        <li>Confirm field journals are available</li>
+                        <li>Test your own Alia access for demo if needed</li>
+                    </ul>
+                </div>
+
+                <div class="objectives-list">
+                    <h4>Set the Room for Deep Work:</h4>
+                    <ul>
+                        <li>Minimize potential distractions</li>
+                        <li>Consider dimming lights slightly (if possible)</li>
+                        <li>Prepare "working quietly" visual cues</li>
+                        <li>Have timer ready and visible</li>
+                    </ul>
+                </div>
+
+                <h3>Conceptual Preparation</h3>
+                <p>Review these key concepts from Chapter 5 that students will be applying today:</p>
+                <div class="objectives-list">
+                    <ul>
+                        <li><strong>Probability:</strong> AI calculates likelihood based on training data patterns</li>
+                        <li><strong>Pattern recognition:</strong> AI identifies what's "typical" in similar contexts</li>
+                        <li><strong>Confidence levels:</strong> How certain AI is about its predictions</li>
+                        <li><strong>Prediction limits:</strong> AI can't actually know what WILL happen—only what's statistically likely</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 Review Student Progress</h4>
+                    <p>If possible, know where each student is in their story development. Identify students who might need encouragement to experiment, or who might over-rely on AI suggestions without critical evaluation. Note students struggling with the probability concepts for additional support.</p>
+                </div>
+
+                <h3>Mental Preparation</h3>
+                <p>This is a <strong>working session with conceptual depth</strong>. Your role is to:</p>
+                <div class="objectives-list">
+                    <ul>
+                        <li><strong>Protect work time</strong>—guard against interruptions</li>
+                        <li><strong>Circulate quietly</strong>—observe experimentation and editorial choices</li>
+                        <li><strong>Listen for insights</strong>—note interesting probability thinking for discussion</li>
+                        <li><strong>Trust the process</strong>—students are synthesizing technical and creative learning</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- LESSON FLOW SECTION -->
+            <section id="lesson-flow" class="section">
+                <h2>Lesson Flow & Timeline</h2>
+
+                <div class="timeline">
+                    <h3>Suggested 50-Minute Structure</h3>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">0:00-0:07<br>(5-7 min)</div>
+                        <div class="timeline-content">
+                            <strong>Opening: Framing the Probability Experiment</strong>
+                            <ul>
+                                <li>Connect to Chapter 5 concepts (probability, pattern recognition)</li>
+                                <li>Explain narrative probability—balancing predictable and surprising</li>
+                                <li>Set expectations for experimental mindset</li>
+                                <li>Preview field journal focus</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">0:07-0:35<br>(25-30 min)</div>
+                        <div class="timeline-content">
+                            <strong>Independent Creative Experimentation</strong>
+                            <ul>
+                                <li>Students work on creative projects</li>
+                                <li>Experiment with AI predictions at different probability levels</li>
+                                <li>Evaluate predictions using probability concepts</li>
+                                <li>Make deliberate creative choices</li>
+                                <li>Teacher circulates, observes, supports as needed</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">0:35-0:42<br>(5-7 min)</div>
+                        <div class="timeline-content">
+                            <strong>Optional: Quick Discussion</strong>
+                            <ul>
+                                <li>Pair-share: One insight about probability in storytelling</li>
+                                <li>Brief whole-class: "When is predictable good? When is surprise better?"</li>
+                                <li>Acknowledge range of creative choices</li>
+                            </ul>
+                            <p><em>Note: Can skip if students need more work time</em></p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">0:42-0:50<br>(5-8 min)</div>
+                        <div class="timeline-content">
+                            <strong>Field Journal Reflection</strong>
+                            <ul>
+                                <li>Students respond to probability-focused prompts</li>
+                                <li>Document AI predictions and creative decisions</li>
+                                <li>Connect technical concepts to creative choices</li>
+                                <li>Reflect on editorial judgment in action</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">0:50-0:52<br>(2 min)</div>
+                        <div class="timeline-content">
+                            <strong>Brief Closing</strong>
+                            <ul>
+                                <li>Acknowledge the experimental nature of today's work</li>
+                                <li>Preview next steps with creative projects</li>
+                                <li>Quick checkout on probability thinking</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Timing Flexibility</h4>
+                    <p>The discussion section is optional. If students are deeply engaged in creative experimentation, skip the discussion and give them full work time. The field journal reflection captures their probability thinking regardless.</p>
+                </div>
+            </section>
+
+            <!-- FACILITATION SECTION -->
+            <section id="facilitation" class="section">
+                <h2>Detailed Facilitation Guide</h2>
+
+                <h3>Opening: Framing the Probability Experiment (5-7 minutes)</h3>
+
+                <div class="script-box">
+                    <div class="script-label">SUGGESTED OPENING SCRIPT</div>
+                    <p>"Welcome back. This week you've been learning about how AI thinks—probability, confidence levels, pattern recognition, prediction limits. Today you'll apply those concepts to something creative: your story.</p>
+                    
+                    <p>Here's our playful experiment: What does AI predict will happen next in your story? And more importantly—are those predictions boring, interesting, or somewhere in between?</p>
+                    
+                    <p>Good stories balance probability and surprise. Completely predictable = boring. Completely random = incoherent. Your job today is to find your sweet spot.</p>
+                    
+                    <p>You'll experiment with AI's predictive capabilities, evaluate what it suggests using your probability thinking, and make conscious creative choices about narrative probability. Sometimes you'll use AI's prediction. Sometimes you'll modify it. Sometimes you'll deliberately choose the opposite.</p>
+                    
+                    <p>The goal isn't to use AI's suggestions as-is. The goal is understanding predictability as a narrative tool—something YOU control based on technical understanding."</p>
+                </div>
+
+                <div class="teacher-note">
+                    <h4>Teaching Note: Bridging Technical and Creative</h4>
+                    <p>This opening frames probability concepts as tools for creative decision-making, not constraints. Emphasize that understanding HOW AI predicts (patterns in training data) gives students power to make better editorial choices.</p>
+                </div>
+
+                <h3>During Independent Work (25-30 minutes)</h3>
+
+                <h4>Your Role: Quiet Observer & Strategic Supporter</h4>
+                <div class="objectives-list">
+                    <ul>
+                        <li><strong>Circulate quietly</strong>—observe without interrupting creative flow</li>
+                        <li><strong>Watch for:</strong> Students experimenting with different prediction types, evaluating AI suggestions critically, articulating probability reasoning</li>
+                        <li><strong>Listen for:</strong> Sophisticated probability thinking ("This feels too obvious," "This is surprising but makes sense," "This doesn't fit my story logic")</li>
+                        <li><strong>Note insights</strong>—interesting probability thinking to potentially highlight later</li>
+                    </ul>
+                </div>
+
+                <h4>When Students Ask for Help</h4>
+
+                <div class="tip-box">
+                    <p><strong>"I don't know what to ask AI"</strong></p>
+                    <p>Guide them to the student-facing lesson: Start simple—"What do you predict will happen next?" Then try variations: "Give me the most likely development," "Give me an unexpected but plausible option," "Give me three different possibilities."</p>
+                </div>
+
+                <div class="tip-box">
+                    <p><strong>"AI's predictions are all boring/generic"</strong></p>
+                    <p>That's a valuable insight! Ask: "Why do you think they feel generic? What's missing?" Connect to pattern recognition—AI is giving you what's statistically common. Your job is deciding if common = right for YOUR story.</p>
+                </div>
+
+                <div class="tip-box">
+                    <p><strong>"Should I use AI's suggestion or not?"</strong></p>
+                    <p>Turn it back to them: "What does your editorial judgment say? Is it predictable in a good way or bad way? Does it fit your story's logic? Would it surprise a reader in an interesting way?" Emphasize: There's no right answer—only thoughtful choices.</p>
+                </div>
+
+                <div class="tip-box">
+                    <p><strong>"I'm stuck on my story"</strong></p>
+                    <p>Today's probability experiment can help: Ask AI for multiple predictions. See what feels alive vs. dead. Use AI's suggestions as creative prompts, not final answers. Sometimes what you DON'T want to do helps clarify what you DO want.</p>
+                </div>
+
+                <h3>Optional Discussion (5-7 minutes)</h3>
+
+                <div class="teacher-note">
+                    <h4>💭 When to Use Discussion</h4>
+                    <p>Include this if students seem to finish their experimentation early or if you want to create space for collective insight. Skip it if students are deeply engaged in creative work—the field journal reflection captures their thinking regardless.</p>
+                </div>
+
+                <div class="objectives-list">
+                    <h4>Discussion Structure</h4>
+                    <p><strong>Pair-Share (2-3 minutes):</strong></p>
+                    <ul>
+                        <li>"Turn to a neighbor and share one thing you noticed about AI's predictions—were they too obvious, too random, or interesting?"</li>
+                    </ul>
+
+                    <p><strong>Whole-Class (3-4 minutes):</strong></p>
+                    <ul>
+                        <li>"When is predictability GOOD in a story?" (Comfort, expectation fulfillment, genre conventions)</li>
+                        <li>"When is surprise BETTER?" (Subverting expectations, creating interest, avoiding clichés)</li>
+                        <li>"Who made a choice today where you deliberately went AGAINST AI's most likely prediction? Why?"</li>
+                    </ul>
+                </div>
+
+                <div class="script-box">
+                    <div class="script-label">DISCUSSION WRAP-UP</div>
+                    <p>"Notice how you're all making different choices—and they're ALL valid if they're thoughtful. That's what editorial judgment means. You understand probability as a tool, and you're using it consciously to create the story YOU want to tell."</p>
+                </div>
+
+                <h3>Field Journal Reflection (5-8 minutes)</h3>
+
+                <div class="script-box">
+                    <div class="script-label">TRANSITION TO REFLECTION</div>
+                    <p>"Time to pause and capture your thinking. Open your field journals. Today's prompts ask you to document your probability experiment—what AI predicted, what you chose to do, and most importantly, WHY. This is where you connect technical concepts to creative decisions."</p>
+                </div>
+
+                <div class="teacher-note">
+                    <h4>💭 Why These Prompts Matter</h4>
+                    <p>The field journal prompts scaffold sophisticated thinking about narrative probability. Students document concrete examples (AI's predictions, their choices) AND articulate their reasoning (connecting probability concepts to creative decisions). This metacognitive work develops both technical literacy and creative agency.</p>
+                </div>
+
+                <h3>Closing (2 minutes)</h3>
+
+                <div class="script-box">
+                    <div class="script-label">SUGGESTED CLOSING</div>
+                    <p>"Today you experimented with probability as a narrative tool. Some of you used AI's predictions. Some modified them. Some deliberately went the opposite direction. All of those are valid IF you made thoughtful choices based on understanding.</p>
+                    
+                    <p>That's the power of technical literacy—it enhances creative agency. You're not just accepting AI's suggestions blindly. You're evaluating them using probability thinking and making conscious creative decisions.</p>
+                    
+                    <p>Keep building your projects. Tomorrow we'll continue exploring how technical understanding changes creative collaboration."</p>
+                </div>
+            </section>
+
+            <!-- ASSESSMENT SECTION -->
+            <section id="assessment" class="section">
+                <h2>📊 Assessment & Observation</h2>
+
+                <h3>What to Assess Today</h3>
+
+                <div class="highlight-box">
+                    <h4>Remember: Process Over Product</h4>
+                    <p>Today's assessment focuses on <em>how students think about probability</em>, not whether they've made "correct" creative choices. There are no correct choices—only thoughtful or thoughtless ones.</p>
+                </div>
+
+                <h3>During Class: Observation Checklist</h3>
+
+                <table>
+                    <tr>
+                        <th>Mastery Point</th>
+                        <th>Evidence to Look For</th>
+                    </tr>
+                    <tr>
+                        <td><strong>MP1: Conceptual Understanding</strong></td>
+                        <td>
+                            Student discusses narrative probability (predictable vs. surprising)<br>
+                            Recognizes that "most likely" ≠ "best choice"<br>
+                            Connects AI predictions to pattern recognition concepts
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>MP2: Technical Application</strong></td>
+                        <td>
+                            Asks AI for predictions at different probability levels<br>
+                            Experiments with multiple prediction options<br>
+                            Uses probability language to evaluate suggestions
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>MP3: Critical Evaluation</strong></td>
+                        <td>
+                            Identifies when predictions feel generic or stereotypical<br>
+                            Articulates WHY a prediction is too obvious or too random<br>
+                            Evaluates predictions against story's internal logic
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>MP4: Creative Agency</strong></td>
+                        <td>
+                            Makes deliberate choices (use, modify, reject AI suggestions)<br>
+                            Articulates reasoning for creative decisions<br>
+                            Balances technical understanding with creative intuition
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>Field Journal: Assessment Focus</h3>
+
+                <div class="objectives-list">
+                    <h4>Look for evidence of:</h4>
+                    <ul>
+                        <li><strong>Concrete examples:</strong> Specific AI predictions documented</li>
+                        <li><strong>Probability thinking:</strong> Using concepts like "too predictable," "generic," "surprising but plausible"</li>
+                        <li><strong>Editorial reasoning:</strong> Explaining WHY they made specific creative choices</li>
+                        <li><strong>Technical connection:</strong> Linking probability concepts to creative decisions</li>
+                        <li><strong>Sophistication:</strong> Moving beyond "I liked it" to "It fits my story logic because..."</li>
+                    </ul>
+                </div>
+
+                <div class="success-box">
+                    <h4>✅ Strong Field Journal Example</h4>
+                    <p><em>"AI predicted my character would confront her mother directly—it said this was the 'most likely' outcome based on their relationship. But that felt too obvious and actually too easy. I realized that what makes my character interesting is that she avoids conflict. So I chose the lower probability option: she writes a letter but doesn't send it. This is unexpected but makes sense for WHO she is. The 'most likely' prediction would have made her generic."</em></p>
+                    <p><strong>Why this is strong:</strong> Concrete example, probability language, editorial reasoning, creative agency</p>
+                </div>
+
+                <h3>Formative Assessment Opportunities</h3>
+                <div class="objectives-list">
+                    <ul>
+                        <li>Quick check-ins during circulation: "Tell me about this prediction—why does/doesn't it work?"</li>
+                        <li>Listen during optional discussion for probability thinking</li>
+                        <li>Review field journal reflections for depth of analysis</li>
+                        <li>Note students who need support applying probability concepts to creative work</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- DIFFERENTIATION SECTION -->
+            <section id="differentiation" class="section">
+                <h2>♿ Differentiation & Support</h2>
+
+                <h3>For Students Who Need More Support</h3>
+
+                <div class="tip-box">
+                    <h4>Struggling to Understand "Narrative Probability"</h4>
+                    <p><strong>Concrete analogy:</strong> "Think about a horror movie. If the character hears a noise and immediately runs TOWARD it, that's low probability—surprising but maybe too random. If they investigate cautiously, that's high probability—expected. The magic zone is when they hesitate, showing fear, then make a choice that surprises us but makes sense for who they are."</p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>Can't Generate AI Predictions</h4>
+                    <p><strong>Provide sentence stems:</strong></p>
+                    <ul>
+                        <li>"Based on what you know about my story, what do you predict will happen next?"</li>
+                        <li>"Give me the most likely development for this scene."</li>
+                        <li>"What would be unexpected but plausible?"</li>
+                        <li>"Give me three different possibilities for what happens next."</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <h4>Evaluating Predictions</h4>
+                    <p><strong>Give a framework:</strong></p>
+                    <ul>
+                        <li>Does it fit your story's logic? (Yes/No/Maybe)</li>
+                        <li>Would a reader see it coming? (Definitely/Maybe/No)</li>
+                        <li>Does it feel fresh or generic? (Fresh/Generic/In-between)</li>
+                        <li>Does it surprise you in a good way or bad way?</li>
+                    </ul>
+                </div>
+
+                <h3>For Students Ready for Extension</h3>
+
+                <div class="success-box">
+                    <h4>Deeper Probability Experimentation</h4>
+                    <p>Challenge advanced students to:</p>
+                    <ul>
+                        <li>Ask AI for probability estimates: "On a scale of 1-10, how likely is this plot development based on typical stories?"</li>
+                        <li>Deliberately manipulate probability: Write a scene that's high-probability on surface but reveals low-probability truth</li>
+                        <li>Analyze genre conventions: "What does AI predict because of my genre? When should I subvert those expectations?"</li>
+                        <li>Explore cultural probability: "Would AI's predictions change based on different cultural contexts?"</li>
+                    </ul>
+                </div>
+
+                <h3>Support Strategies by Challenge Type</h3>
+
+                <table>
+                    <tr>
+                        <th>If Student...</th>
+                        <th>Try This...</th>
+                    </tr>
+                    <tr>
+                        <td>Accepts all AI suggestions uncritically</td>
+                        <td>Ask: "Is this what YOU want or just what AI predicts?" Remind them: AI shows patterns, not creative truth. Your judgment matters most.</td>
+                    </tr>
+                    <tr>
+                        <td>Rejects all AI suggestions automatically</td>
+                        <td>Encourage curiosity: "Even if you don't use it, what can you learn from what AI predicts? Why does it think this is likely?" Value AI as thought partner, not just tool.</td>
+                    </tr>
+                    <tr>
+                        <td>Struggles connecting probability to creativity</td>
+                        <td>Use concrete examples from familiar stories: "In [popular movie], when did you feel surprised? Was it random or did it make sense?" Build the bridge between technical concept and creative experience.</td>
+                    </tr>
+                    <tr>
+                        <td>Has difficulty writing field journal reflection</td>
+                        <td>Offer sentence stems: "AI predicted... I chose to... because..." OR pair them with a peer to talk through thinking before writing.</td>
+                    </tr>
+                </table>
+
+                <h3>ELL Support</h3>
+                <div class="objectives-list">
+                    <ul>
+                        <li>Pre-teach key vocabulary: probability, predictable, plausible, generic, narrative</li>
+                        <li>Provide word bank for field journal: "expected," "surprising," "makes sense," "too obvious," "random"</li>
+                        <li>Allow verbal reflection before written response</li>
+                        <li>Accept code-switching in creative work—authenticity matters more than grammar today</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CHALLENGES SECTION -->
+            <section id="challenges" class="section">
+                <h2>🚧 Common Challenges & Solutions</h2>
+
+                <h3>Challenge 1: Students Don't Understand Why to Experiment with Predictions</h3>
+                <p><strong>The issue:</strong> "Why does it matter what AI predicts if I'm just going to write what I want anyway?"</p>
+                
+                <p><strong>Immediate response:</strong> "Great question! Two reasons: (1) Understanding what's PROBABLE helps you decide when to surprise your reader. If you know what they expect, you can either deliver it satisfyingly OR subvert it interestingly. (2) AI's predictions reveal patterns and clichés—what's been done before. Sometimes you'll think 'That's exactly right!' but other times you'll think 'That's too obvious'—and both reactions are valuable creative information."</p>
+
+                <p><strong>For next time:</strong> Include a mini-example in opening—show a familiar story scenario and ask what students predict, then reveal what actually happens and discuss why it works.</p>
+
+                <h3>Challenge 2: AI Predictions Are Too Generic or Stereotypical</h3>
+                <p><strong>The issue:</strong> Multiple students report that AI's predictions feel boring, clichéd, or stereotypical.</p>
+                
+                <p><strong>Immediate response:</strong> "This is a valuable discovery! WHY do they feel generic? Connect to pattern recognition—AI is showing you what's statistically common in similar stories. That's exactly why YOUR creative judgment matters. AI can tell you what's typical, but only YOU can decide what's right for your story. Use the boring prediction as a signal: 'If this is the obvious choice, what would be unexpected but make sense?'"</p>
+
+                <p><strong>Teaching moment:</strong> This is actually evidence of students' growing sophistication. They're recognizing when probability-based predictions lack creative nuance. Celebrate this critical thinking.</p>
+
+                <h3>Challenge 3: Students Over-Rely on AI Suggestions</h3>
+                <p><strong>The issue:</strong> Some students accept AI's first prediction without evaluation or experimentation.</p>
+                
+                <p><strong>Immediate response:</strong> Ask probing questions: "Is this what AI predicts or what YOU want? Try asking for three different options—which one feels most alive to you? What makes it better than the others?" Emphasize: The goal is developing YOUR editorial judgment, not finding AI's answers.</p>
+
+                <p><strong>For next time:</strong> Build in requirement: "Try at least TWO different prediction prompts before making your creative choice." Structure forces experimentation.</p>
+
+                <h3>Challenge 4: Students Can't Articulate Why a Prediction Works/Doesn't Work</h3>
+                <p><strong>The issue:</strong> Students know they like/dislike a prediction but can't explain why using probability concepts.</p>
+                
+                <p><strong>Immediate response:</strong> Provide thinking prompts:</p>
+                <ul>
+                    <li>"Does it surprise you? Good surprise or bad surprise?"</li>
+                    <li>"Would a reader see this coming?"</li>
+                    <li>"Does it fit your character's logic or story's logic?"</li>
+                    <li>"Is it what you've seen before or something fresh?"</li>
+                    <li>"If you told a friend this plot point, would they say 'interesting!' or 'that's obvious'?"</li>
+                </ul>
+
+                <p><strong>For next time:</strong> Create a simple evaluation rubric students can reference: Predictability (high/medium/low), Fit with story logic (yes/no), Freshness (generic/fresh/in-between), Reader surprise (none/mild/strong).</p>
+
+                <h3>Challenge 5: Discussion Feels Forced or Unproductive</h3>
+                <p><strong>The issue:</strong> If you include the optional discussion, students don't engage meaningfully.</p>
+                
+                <p><strong>Immediate response:</strong> Skip it. Say: "I can tell you're all deep in your creative work—let's protect that time. Keep working, and your field journal reflection will capture your probability thinking."</p>
+
+                <p><strong>Remember:</strong> Discussion is optional for a reason. If students are genuinely engaged in creative experimentation, discussion interrupts rather than enhances learning. Trust the field journal to capture their insights.</p>
+
+                <h3>Challenge 6: Technical Issues with Alia-Creative</h3>
+                <p><strong>Immediate response:</strong> Have backup activity ready: Students can manually explore probability without AI. "Brainstorm three different plot developments for this scene: one high-probability (expected), one low-probability (surprising), one magic-zone (unexpected but fits). Which would you choose? Why?" This still develops probability thinking without requiring AI access.</p>
+            </section>
+
+            <!-- REFLECTION SECTION -->
+            <section id="reflection" class="section">
+                <h2>💭 Teacher Reflection</h2>
+
+                <h3>After Teaching This Lesson</h3>
+
+                <p><strong>What worked:</strong></p>
+                <ul>
+                    <li>Did students experiment with AI predictions meaningfully?</li>
+                    <li>What evidence showed probability thinking (beyond just "I liked it")?</li>
+                    <li>Were field journal reflections specific and sophisticated?</li>
+                    <li>Did students make deliberate creative choices (use/modify/reject AI suggestions)?</li>
+                </ul>
+
+                <p><strong>What needs adjustment:</strong></p>
+                <ul>
+                    <li>Did opening adequately connect Chapter 5 concepts to creative work?</li>
+                    <li>Was work time the right length for meaningful experimentation?</li>
+                    <li>Did discussion (if included) add value or interrupt creative flow?</li>
+                    <li>Were field journal prompts accessible but rigorous enough?</li>
+                </ul>
+
+                <p><strong>Student insights to note:</strong></p>
+                <ul>
+                    <li>What interesting probability thinking did you overhear?</li>
+                    <li>Who made particularly thoughtful creative choices?</li>
+                    <li>What patterns emerged in how students evaluated AI predictions?</li>
+                    <li>Did any students have "aha" moments about narrative probability?</li>
+                </ul>
+
+                <p><strong>For next Project Day:</strong></p>
+                <ul>
+                    <li>Which students need more support applying technical concepts to creativity?</li>
+                    <li>Which students are ready for deeper probability experimentation?</li>
+                    <li>Should future project days include more/less conceptual framing?</li>
+                    <li>What worked well about this format to repeat?</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Looking Ahead</h4>
+                    <p><strong>Preparing for upcoming lessons:</strong> Review field journals to identify themes and insights for future discussions. Note which probability concepts landed well and which need reinforcement. Consider how students' probability thinking evolves across the remaining creative project work.</p>
+                    
+                    <p><strong>Creative project trajectory:</strong> Students are now applying technical literacy to enhance creative agency. Future project days can build on this foundation, exploring other technical concepts (like training data, confidence, hallucination) as creative tools.</p>
+                </div>
+
+                <h3>Connecting to Larger Goals</h3>
+                <p>Today's lesson exemplifies the course's core pedagogy: technical understanding enhances creative power. Students aren't just learning ABOUT probability—they're using it as a tool for narrative design. This is AI literacy that matters: not just knowing how AI works, but knowing how to work WITH AI while maintaining human judgment and creative control.</p>
+
+                <div class="success-box">
+                    <h4>✅ Signs This Lesson Achieved Its Goals</h4>
+                    <ul>
+                        <li>Students experimented with multiple AI predictions rather than accepting the first one</li>
+                        <li>Students used probability language to evaluate suggestions ("too predictable," "generic," "surprising but makes sense")</li>
+                        <li>Students made deliberate creative choices and could articulate their reasoning</li>
+                        <li>Field journal reflections showed connection between technical concepts and creative decisions</li>
+                        <li>Students maintained authorial control while using AI as a thought partner</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</body>
+</html>
